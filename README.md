@@ -1,1 +1,1 @@
-##**Grails REST API**
+**Grails REST API**
