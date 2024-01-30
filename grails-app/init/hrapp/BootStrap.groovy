@@ -50,7 +50,7 @@ class BootStrap {
         def sql = Sql.newInstance(db.url, db.user, db.password, db.driver)
 
         def userDir=System.getProperty('user.dir')
-        def sqlDir = userDir+'\\sql\\hr.sql'
+        def sqlDir = userDir+'/sql/hr.sql'
         print(sqlDir)
         def myFile = new File(sqlDir)
 

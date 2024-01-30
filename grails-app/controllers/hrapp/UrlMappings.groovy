@@ -9,6 +9,8 @@ class UrlMappings {
         post "/$controller(.$format)?"(action:"save")
         put "/$controller/$id(.$format)?"(action:"update")
         patch "/$controller/$id(.$format)?"(action:"patch")
+        get "/commonCodes"(controller: "commonCode", action: "commonCodes")
+        "/product/$id"(controller:"product", action: "update", method: "PUT")
 
         "/"(controller: 'application', action:'index')
         "500"(view: '/error')
