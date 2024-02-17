@@ -15,7 +15,7 @@ import grails.gorm.transactions.Transactional
 @ReadOnly
 class CommonCodeController {
 
-    Job job;
+    Job job
     JobService  jobService
 
     static responseFormats = ['json', 'xml']

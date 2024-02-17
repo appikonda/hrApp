@@ -22,11 +22,20 @@ class JobController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond jobService.list(params), model:[jobCount: jobService.count()]
+        List<Job> jobs =jobService.list(params)
+        List<ResponseDto> responseDtos = []
+        jobs?.eachWithIndex{ Job job, int i ->
+            ResponseDto response = new ResponseDto(jobTitle: job.jobTitle, minSalary: job.minSalary, name: null)
+            responseDtos.add(response)
+        }
+        def json = groovy.json.JsonOutput.toJson(responseDtos)
+        respond json
     }
 
     def show(Long id) {
-        respond jobService.get(id)
+        Job job = jobService.get(id)
+        ResponseDto responseDto = new ResponseDto(jobTitle:job.jobTitle, maxSalary: job.maxSalary, minSalary: job.minSalary)
+        respond responseDto
     }
 
     @Transactional
